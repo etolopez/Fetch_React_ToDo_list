@@ -15,10 +15,16 @@ const Home = () => {
     );
   };
 
+  let style1 = {
+    height: "15px",
+    backgroundColor: "white",
+    zIndex: -1,
+}
+
   return (
     <div className="text-center container m-auto">
       <div className="row justify-content-center mt-2">
-        <div className="shadow p-3 mb-5 col-12 mt-3 border bg-white rounded">
+        <div className="shadow p-3 col-12 mt-3 border bg-white rounded">
           <h1 className="text-muted">Todo List</h1>
           <div className="row">
             <div className="col">
@@ -57,26 +63,26 @@ const Home = () => {
               );
             })}
           </div>
-          <div className="row shadow border"></div>
-
           {task.length === 0 ? (
-            <div className="row">
+            <div className="row border-top">
             <div className="col-8 mt-2">
               <p> No Items on the list</p>
             </div>
             <div className="col-4"></div>
           </div>
           ) : (
-            <div className="row">
-            <div className="col-8 mt-2">
+            <div className="row border-top">
+            <div className="col-8 mt-2 ">
               <p>{task.length} Items on the list</p>
             </div>
             <div className="col-4"></div>
           </div>
           ) }
-          <div className="row shadow border" id="backRow">
-          </div>
         </div>
+          <div className="row mt-0 rounded shadow" style={style1} id="paginas">
+          </div>
+          <div className="row mt-0 rounded shadow" style={style1} id="paginas1">
+          </div>
       </div>
     </div>
   );

@@ -27,3 +27,50 @@ p {
     font-size: 20px;
     font-weight: 100;
 }
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+    #paginas {
+      width: 490px;
+    }
+    #paginas1 {
+      width: 460px;
+    }
+  }
+
+
+@media screen and (min-width: 767px) and (max-width: 992px) {
+    #paginas {
+      width: 680px;
+    }
+    #paginas1 {
+      width: 660px;
+    }
+  }
+
+@media screen and (min-width: 993px) and (max-width:1024px) {
+    #paginas {
+      width: 950px;
+    }
+    #paginas1 {
+      width: 930px;
+    }
+  }
+
+@media screen and (min-width: 1025px) and (max-width:1281px) {
+    #paginas {
+      width: 1110px;
+    }
+    #paginas1 {
+      width: 1095px;
+    }
+  }
+  
+@media screen and (min-width:1282px) and (max-width:1920px) {
+    #paginas {
+      width: 1300px;
+    }
+    #paginas1 {
+      width: 1250px;
+    }
+}
+
