@@ -61,15 +61,17 @@ const Home = () => {
 
           {task.length === 0 ? (
             <div className="row">
-            <div className="col float-left">
+            <div className="col-8 mt-2">
               <p> No Items on the list</p>
             </div>
+            <div className="col-4"></div>
           </div>
           ) : (
             <div className="row">
-            <div className="col float-left">
+            <div className="col-8 mt-2">
               <p>{task.length} Items on the list</p>
             </div>
+            <div className="col-4"></div>
           </div>
           ) }
           <div className="row shadow border" id="backRow">
