@@ -41,9 +41,9 @@ const Home = () => {
           <div className="row">
             <div className="col">
               <input
-                className="text-dark"
+                className="text-dark border-none"
                 type="text"
-                size={35}
+                size={30}
                 placeholder="What else should we add?"
                 onKeyDown={(e) => {
                   if (e.key == "Enter") {
@@ -55,7 +55,7 @@ const Home = () => {
             {task.map((e, index) => {
               return (
                 <div
-                  className="row mt-1 p-0"
+                  className="row mt-1 p-0 border-top"
                   onMouseEnter={() => setIsShown(true)}
                   onMouseLeave={() => setIsShown(false)}
                 >
@@ -75,6 +75,7 @@ const Home = () => {
               );
             })}
           </div>
+          <div className="row shadow border" id="backRow"></div>
           <div className="row">
             <div className="col float-left">
               <p> {task.map((e, lastIndex) => {
@@ -87,7 +88,8 @@ const Home = () => {
           })} Items on the list</p>
             </div>
           </div>
-        
+          <div className="row shadow border" id="backRow">
+          </div>
         </div>
       </div>
     </div>
