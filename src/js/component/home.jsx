@@ -4,7 +4,8 @@ import { useState } from "react";
 //create your first component
 const Home = () => {
   const [task, setTask] = useState([]);
-  const [isShown, setIsShown] = useState(false);
+  const [isShown, setIsShown] = useState(-1);
+
 
   const handleDeleteTask = function (index) {
     setTask(
@@ -12,25 +13,6 @@ const Home = () => {
         return currentIndex !== index;
       })
     );
-  };
-
-  const style = {
-    position: "relative",
-    width: "90rem",
-    height: "20px",
-    zIndex: "-1",
-    top: "60px",
-    backgroundColor: "white",
-  };
-
-  const style1 = {
-    position: "relative",
-    width: "75rem",
-    height: "30px",
-    left: "5px",
-    zIndex: "-2",
-    top: "40px",
-    backgroundColor: "white",
   };
 
   return (
@@ -56,15 +38,15 @@ const Home = () => {
               return (
                 <div
                   className="row mt-1 p-0 border-top"
-                  onMouseEnter={() => setIsShown(true)}
-                  onMouseLeave={() => setIsShown(false)}
+                  onMouseEnter={() => setIsShown(index)}
+                  onMouseLeave={() => setIsShown(-1)}
                 >
                   <div className="col-11 mt-3 pt-2 pb-2" key={index}>
                     <div className="col" id="textList">
                       {e}
                     </div>
                   </div>
-                  {isShown ? (
+                  {isShown == index ? (
                     <div className="col-1 pt-4">
                       <span onClick={() => handleDeleteTask(index)}>X</span>
                     </div>
@@ -75,19 +57,21 @@ const Home = () => {
               );
             })}
           </div>
-          <div className="row shadow border" id="backRow"></div>
-          <div className="row">
+          <div className="row shadow border"></div>
+
+          {task.length === 0 ? (
+            <div className="row">
             <div className="col float-left">
-              <p> {task.map((e, lastIndex) => {
-            let lastElem = lastIndex + 1;
-            if (lastElem >= 1){
-              return lastElem
-            } else if (lastIndex = 0){
-              return 0
-            };
-          })} Items on the list</p>
+              <p> No Items on the list</p>
             </div>
           </div>
+          ) : (
+            <div className="row">
+            <div className="col float-left">
+              <p>{task.length} Items on the list</p>
+            </div>
+          </div>
+          ) }
           <div className="row shadow border" id="backRow">
           </div>
         </div>
