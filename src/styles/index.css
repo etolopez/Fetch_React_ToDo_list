@@ -18,6 +18,13 @@ input {
     text-align: left;
     padding-left: 10px;
 }
+#textList1.col {
+    text-align: right;
+    padding-left: 10px;
+    color:rgb(141, 141, 190);
+    font-size: smaller;
+    font-style: italic;
+}
 
 h1{
     font-size: 80px;
@@ -74,3 +81,14 @@ p {
     }
 }
 
+.lineClass {
+  text-decoration-line: line-through;
+}
+
+#check {
+  color: green;
+}
+
+#del {
+  color: red;
+}
