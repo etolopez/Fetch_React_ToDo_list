@@ -81,13 +81,20 @@ p {
     }
 }
 
-.lineClass {
+
+.lineClass  {
   text-decoration-line: line-through;
+  color: rgb(58, 156, 71);
 }
 
 #check {
   color: green;
 }
+
+#check2 {
+  color: rgb(233, 134, 42);
+}
+
 
 #del {
   color: red;

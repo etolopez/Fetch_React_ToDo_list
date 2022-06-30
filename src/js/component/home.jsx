@@ -6,7 +6,8 @@ const Home = () => {
   const apiURL = "http://assets.breatheco.de/apis/fake/todos/user/etolopez";
   const [task, setTask] = useState([]);
   const [isShown, setIsShown] = useState(-1);
-  //  const [user, setUser] = useState(true)
+  const [done, setDone] = useState(true)
+ 
 
   useEffect(() => {
     fetch(apiURL)
@@ -50,6 +51,13 @@ const Home = () => {
       .catch((err) => err);
   };
 
+  const showCheck = () => {
+    setDone(true)
+  }
+  const showItem = () => {
+    setDone(false)
+  }
+
   const handleDeleteTask = function (index) {
     const filter = task.filter((item, currentIndex) => {
       return currentIndex !== index;
@@ -58,12 +66,21 @@ const Home = () => {
     updateTask(filter);
   };
 
+
+  const handleInCompleteTask = (index) => {
+    let copyTask = [...task];
+    copyTask[index].done = false;
+    setTask(copyTask);
+    updateTask(copyTask);
+  };
+
   const handleCompletedTask = (index) => {
     let copyTask = [...task];
     copyTask[index].done = true;
     setTask(copyTask);
     updateTask(copyTask);
   };
+
 
   const handleDeleteAllTasks = () => {
     setTask([]);
@@ -116,7 +133,9 @@ const Home = () => {
                     </div>
                     {isShown == index ? (
                       <div className="col-2 pt-4" key={index}>
-                        <span id="check" onClick={() => handleCompletedTask(index)}>✓</span>
+                        {done ? <span id="check" onClick={() => {handleCompletedTask(index), showItem()}}>✓</span> : 
+                        <span id="check2" onClick={() => {handleInCompleteTask(index), showCheck()}}>✓</span>
+                        }<span>   </span>
                         <span id="del" onClick={() => handleDeleteTask(index)}>X</span>
                       </div>
                     ) : (
@@ -132,15 +151,18 @@ const Home = () => {
                     onMouseEnter={() => setIsShown(index)}
                     onMouseLeave={() => setIsShown(-1)}
                   >
-                    <div className="col-1"></div>
-                    <div className="col-9 mt-3 mb-3 pt-2 pb-2">
+                    <div className={`col-2 mt-4 mb-2 pt-2 pb-2 pl-0 ${item.done ? "fa fa-check" : "" }`}></div>
+                    <div className="col-8 mt-3 mb-3 pt-2 pb-2">
                       <div className={`col ${item.done ? "lineClass" : "" }`} id="textList" >
-                        {item.label}
+                        {item.label} 
                       </div>
+                      
                     </div>
                     {isShown == index ? (
                       <div className="col-2 pt-4" key={index}>
-                        <span id="check" onClick={() => handleCompletedTask(index)}>✓</span>
+                        {done ? <span id="check" onClick={() => {handleCompletedTask(index), showItem()}}>✓</span> : 
+                        <span id="check2" onClick={() => {handleInCompleteTask(index), showCheck()}}>✓</span>
+                        }<span>   </span>
                         <span id="del" onClick={() => handleDeleteTask(index)}>X</span>
                       </div>
                     ) : (
